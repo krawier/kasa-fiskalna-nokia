@@ -55,3 +55,7 @@ void kasaFiskalna::dodajDoKoszyka(int id, int ilosc) {
         }
     }
 }
+
+void kasaFiskalna::usunTowarZKoszyka(int id) {
+    aktywnyRachunek.usunZKoszyka(id);
+}

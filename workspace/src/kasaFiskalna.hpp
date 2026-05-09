@@ -19,6 +19,7 @@ public:
     void usunTowarZRejestru(int id);
     int getRozmiarRejestru();
     void dodajDoKoszyka(int id, int ilosc);
+    void usunTowarZKoszyka(int id);
     std::vector<Towar> getRejestr();
     double getBalans();
 
