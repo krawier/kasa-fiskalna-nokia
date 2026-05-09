@@ -23,7 +23,7 @@ public:
     std::vector<Towar> getRejestr();
     double getBalans();
     std::vector<Towar> getTowaryZKoszyka();
-
+    void zamknijRachunek();
 
 
 };

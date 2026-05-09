@@ -76,3 +76,16 @@ TEST(KasaFiskalnaTest, ShouldReturnListOfProductsInBasket) {
     EXPECT_EQ(lista[0].nazwa, "Chleb");
     EXPECT_EQ(lista[2].nazwa, "Masło");
 }
+
+TEST(KasaFiskalnaTest, ShouldStartNewReceiptAfterClosingCurrentOne) {
+    kasaFiskalna kasa;
+    kasa.dodajTowarDoRejestru(1, "Chleb", 5.50);
+    kasa.dodajDoKoszyka(1, 2); 
+
+    ASSERT_EQ(kasa.getBalans(), 11.00);
+
+    kasa.zamknijRachunek();
+
+    EXPECT_EQ(kasa.getBalans(), 0.0);
+    EXPECT_EQ(kasa.getTowaryZKoszyka().size(), 0);
+}

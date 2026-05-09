@@ -63,3 +63,7 @@ void kasaFiskalna::usunTowarZKoszyka(int id) {
 std::vector<Towar> kasaFiskalna::getTowaryZKoszyka(){
     return aktywnyRachunek.getTowary();
 }
+
+void kasaFiskalna::zamknijRachunek() {
+    aktywnyRachunek.wyczysc();
+}
