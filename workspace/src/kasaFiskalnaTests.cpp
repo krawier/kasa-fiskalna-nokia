@@ -60,3 +60,19 @@ TEST(KasaFiskalnaTest, ShouldRemoveItmeseInActiveBasketProducts) {
 
     EXPECT_EQ(kasa.getBalans(), 15.00);
 }
+
+TEST(KasaFiskalnaTest, ShouldReturnListOfProductsInBasket) {
+    kasaFiskalna kasa; 
+    
+    kasa.dodajTowarDoRejestru(1, "Chleb", 5.50);
+    kasa.dodajTowarDoRejestru(2, "Masło", 6.00);
+
+    kasa.dodajDoKoszyka(1, 1); 
+    kasa.dodajDoKoszyka(2, 2); 
+
+    std::vector<Towar> lista = kasa.getTowaryZKoszyka();
+
+    EXPECT_EQ(lista.size(), 3);
+    EXPECT_EQ(lista[0].nazwa, "Chleb");
+    EXPECT_EQ(lista[2].nazwa, "Masło");
+}

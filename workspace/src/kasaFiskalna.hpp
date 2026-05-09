@@ -22,6 +22,7 @@ public:
     void usunTowarZKoszyka(int id);
     std::vector<Towar> getRejestr();
     double getBalans();
+    std::vector<Towar> getTowaryZKoszyka();
 
 
 

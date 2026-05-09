@@ -25,3 +25,7 @@ double Koszyk::getBalans(){
     }
     return suma;
 }
+
+std::vector<Towar> Koszyk::getTowary(){
+    return listaZakupow;
+}

@@ -16,4 +16,5 @@ public:
     void usunZKoszyka(int id);
     void wyczysc();
     double getBalans();
+    std::vector<Towar> getTowary();
 };

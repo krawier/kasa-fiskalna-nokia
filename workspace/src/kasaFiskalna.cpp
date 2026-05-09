@@ -59,3 +59,7 @@ void kasaFiskalna::dodajDoKoszyka(int id, int ilosc) {
 void kasaFiskalna::usunTowarZKoszyka(int id) {
     aktywnyRachunek.usunZKoszyka(id);
 }
+
+std::vector<Towar> kasaFiskalna::getTowaryZKoszyka(){
+    return aktywnyRachunek.getTowary();
+}
