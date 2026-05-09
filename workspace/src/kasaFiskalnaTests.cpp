@@ -3,11 +3,11 @@
 
 TEST(KasaFiskalnaTest, ShouldAddProductToRegistry) {
     // arrange - tworzymy instancję naszej kasy
-    KasaFiskalna kasa; 
+    kasaFiskalna kasa; 
 
     // act  - próbujemy dodać towar. Zgodnie z wymaganiami podajemy id, nazwę i cenę.
     kasa.dodajTowarDoRejestru(1, "Chleb", 5.50);
 
     // assert  - sprawdzamy, czy w rejestrze znajduje się teraz 1 towar
-    EXPECT_EQ(kasa.pobierzRozmiarRejestru(), 1);
+    EXPECT_EQ(kasa.getRozmiarRejestru(), 1);
 }
