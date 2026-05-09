@@ -14,6 +14,7 @@ class kasaFiskalna{
     
 private:
     std::vector<Towar> rejestr;
+    double balans;
 public:
 
     kasaFiskalna();
@@ -22,6 +23,7 @@ public:
     void dodajTowarDoRejestru(int id, const std::string& nazwa, double cena);
     void usunTowarZRejestru(int id);
     int getRozmiarRejestru();
+    double getBalans();
 
 
 

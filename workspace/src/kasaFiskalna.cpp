@@ -14,6 +14,7 @@ void kasaFiskalna::dodajTowarDoRejestru(int id, const std::string& nazwa, double
     nowyTowar.cena = cena;
 
     rejestr.push_back(nowyTowar);
+    balans += nowyTowar.cena;
 
 
 }
@@ -25,12 +26,17 @@ void kasaFiskalna::usunTowarZRejestru(int id){
         Towar currentProdukt  = rejestr[i];
 
         if(currentProdukt.id == id){
+            balans -= currentProdukt.cena;
            rejestr.erase(rejestr.begin() + i);
            break;
         }
 
     }
 
+}
+
+double kasaFiskalna::getBalans(){
+    return balans;
 }
 
 int kasaFiskalna::getRozmiarRejestru() {
