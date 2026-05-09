@@ -19,3 +19,13 @@ TEST(KasaFiskalnaTest, ShouldDeleteProductFromRegistry) {
     kasa.usunTowarZRejestru(1);
     EXPECT_EQ(kasa.getRozmiarRejestru(), 0);
 }
+TEST(KasaFiskalnaTest, ShouldDeleteProductFromRegistryMultiple) {
+    kasaFiskalna kasa; 
+
+    kasa.dodajTowarDoRejestru(1, "Chleb", 5.50);
+    kasa.dodajTowarDoRejestru(2, "Chleb", 5.50);
+    kasa.dodajTowarDoRejestru(3, "Chleb", 5.50);
+    kasa.usunTowarZRejestru(1);
+    kasa.usunTowarZRejestru(2);
+    EXPECT_EQ(kasa.getRozmiarRejestru(), 1);
+}
