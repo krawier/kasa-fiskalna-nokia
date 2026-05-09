@@ -1,20 +1,15 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "koszyk.hpp"
 
 
-struct Towar {
-
-	int id;
-	std::string nazwa;
-	double cena;
-};
 
 class kasaFiskalna{
     
 private:
     std::vector<Towar> rejestr;
-    double balans;
+    Koszyk aktywnyRachunek;
 public:
 
     kasaFiskalna();
@@ -23,6 +18,8 @@ public:
     void dodajTowarDoRejestru(int id, const std::string& nazwa, double cena);
     void usunTowarZRejestru(int id);
     int getRozmiarRejestru();
+    void dodajDoKoszyka(int id, int ilosc);
+    std::vector<Towar> getRejestr();
     double getBalans();
 
 

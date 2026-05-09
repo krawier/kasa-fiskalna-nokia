@@ -12,7 +12,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(googletest)
 
-add_executable(sample_test src/testZero.cpp src/sampleTests.cpp src/kasaFiskalnaTests.cpp src/kasaFiskalna.cpp ) 
+add_executable(sample_test src/testZero.cpp src/sampleTests.cpp src/kasaFiskalnaTests.cpp src/kasaFiskalna.cpp src/koszyk.cpp) 
 target_include_directories(sample_test PUBLIC include)
 target_link_libraries(sample_test gmock_main gtest gmock)
 target_compile_features(sample_test PUBLIC cxx_std_23)

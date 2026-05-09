@@ -14,7 +14,6 @@ void kasaFiskalna::dodajTowarDoRejestru(int id, const std::string& nazwa, double
     nowyTowar.cena = cena;
 
     rejestr.push_back(nowyTowar);
-    balans += nowyTowar.cena;
 
 
 }
@@ -26,7 +25,6 @@ void kasaFiskalna::usunTowarZRejestru(int id){
         Towar currentProdukt  = rejestr[i];
 
         if(currentProdukt.id == id){
-            balans -= currentProdukt.cena;
            rejestr.erase(rejestr.begin() + i);
            break;
         }
@@ -36,9 +34,24 @@ void kasaFiskalna::usunTowarZRejestru(int id){
 }
 
 double kasaFiskalna::getBalans(){
-    return balans;
+    return aktywnyRachunek.getBalans();
 }
 
 int kasaFiskalna::getRozmiarRejestru() {
     return rejestr.size();
+}
+
+std::vector<Towar> kasaFiskalna::getRejestr(){
+    return rejestr;
+}
+
+void kasaFiskalna::dodajDoKoszyka(int id, int ilosc) {
+    for(size_t i = 0; i < rejestr.size(); i++) {
+        if(rejestr[i].id == id) {
+            for(int j = 0; j < ilosc; j++) {
+                aktywnyRachunek.dodajTowar(rejestr[i]);
+            }
+            break; 
+        }
+    }
 }
