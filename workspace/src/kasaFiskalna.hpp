@@ -20,7 +20,7 @@ public:
     ~kasaFiskalna();
 
     void dodajTowarDoRejestru(int id, const std::string& nazwa, double cena);
-
+    void usunTowarZRejestru(int id);
     int getRozmiarRejestru();
 
 
