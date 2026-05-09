@@ -4,12 +4,18 @@
 #include "koszyk.hpp"
 
 
+struct Promocja {
+    int id;
+    std::string nazwa;
+    bool aktywna;
+};
 
 class kasaFiskalna{
     
 private:
     std::vector<Towar> rejestr;
     Koszyk aktywnyRachunek;
+    std::vector<Promocja> promocje; 
 public:
 
     kasaFiskalna();
@@ -24,6 +30,12 @@ public:
     double getBalans();
     std::vector<Towar> getTowaryZKoszyka();
     void zamknijRachunek();
+
+
+    void dodajPromocje(int id, std::string nazwa);
+    void aktywujPromocje(int id);
+    void deaktywujPromocje(int id);
+    bool czyPromocjaAktywna(int id);
 
 
 };

@@ -89,3 +89,17 @@ TEST(KasaFiskalnaTest, ShouldStartNewReceiptAfterClosingCurrentOne) {
     EXPECT_EQ(kasa.getBalans(), 0.0);
     EXPECT_EQ(kasa.getTowaryZKoszyka().size(), 0);
 }
+
+TEST(KasaFiskalnaTest, ShouldActivateAndDeactivatePromotionInRegistry) {
+    kasaFiskalna kasa;
+    
+    kasa.dodajPromocje(100, "Globalna 10%");
+
+    EXPECT_FALSE(kasa.czyPromocjaAktywna(100));
+
+    kasa.aktywujPromocje(100);
+    EXPECT_TRUE(kasa.czyPromocjaAktywna(100));
+
+    kasa.deaktywujPromocje(100);
+    EXPECT_FALSE(kasa.czyPromocjaAktywna(100));
+}
