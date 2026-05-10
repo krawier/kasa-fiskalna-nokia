@@ -211,7 +211,6 @@ bool kasaFiskalna::czyTowarWPromocji(int saleID, int prodID){
             }
             return false; 
         }
-        return false;
     }
     return false;
 }
