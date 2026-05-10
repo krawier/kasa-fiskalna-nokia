@@ -43,5 +43,6 @@ public:
     void dodajTowarDoPromocji(int saleID, int prodID);
     void usunTowarZPromocji(int saleID, int prodID);
 
+    std::vector<Promocja> getPromocje();
 
 };

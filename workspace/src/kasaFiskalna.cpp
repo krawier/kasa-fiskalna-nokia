@@ -179,3 +179,7 @@ bool kasaFiskalna::czyTowarWPromocji(int saleID, int prodID){
     }
     return false;
 }
+
+std::vector<Promocja> kasaFiskalna::getPromocje(){
+    return promocje;
+}

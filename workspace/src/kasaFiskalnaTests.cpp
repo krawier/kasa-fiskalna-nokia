@@ -120,3 +120,16 @@ TEST(KasaFiskalnaTest, ShouldAddAndRemoveProductFromPromotion) {
 
     EXPECT_FALSE(kasa.czyTowarWPromocji(100, 1));
 }
+
+TEST(KasaFiskalnaTest, ShouldReturnListOfRegisteredPromotions) {
+    kasaFiskalna kasa;
+
+    kasa.dodajPromocje(10, "Promocja na pieczywo");
+    kasa.dodajPromocje(20, "Wszystko -10%");
+
+    std::vector<Promocja> listaPromocji = kasa.getPromocje();
+
+    EXPECT_EQ(listaPromocji.size(), 2);
+    EXPECT_EQ(listaPromocji[0].nazwa, "Promocja na pieczywo");
+    EXPECT_EQ(listaPromocji[1].id, 20);
+}
