@@ -34,3 +34,7 @@ std::vector<Towar> Koszyk::getTowary(){
 void Koszyk::ustawZnizke(double procent) {
     aktywnaZnizkaProcentowa = procent;
 }
+
+double Koszyk::getAktywnaZnizka() {
+    return aktywnaZnizkaProcentowa;
+}

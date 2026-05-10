@@ -150,3 +150,17 @@ TEST(KasaFiskalnaTest, ShouldApplyGlobal10PercentDiscountWhenLoyaltyCardScanned)
 
     EXPECT_EQ(kasa.getBalans(), 9.00);
 }
+
+TEST(KasaFiskalnaTest, ShouldApply3rdItemFreePromotion) {
+    kasaFiskalna kasa;
+    
+    kasa.dodajTowarDoRejestru(1, "Chleb", 5.00);
+    kasa.dodajPromocje(10, "3 sztuka gratis");
+    kasa.dodajTowarDoPromocji(10, 1);
+    
+    kasa.aktywujPromocje(10); 
+
+    kasa.dodajDoKoszyka(1, 3); 
+
+    EXPECT_EQ(kasa.getBalans(), 10.00);
+}

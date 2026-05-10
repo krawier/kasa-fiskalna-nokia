@@ -2,6 +2,8 @@
 #include "kasaFiskalna.hpp"
 #include <string>
 #include <vector>
+#include <map>
+
 
 kasaFiskalna::kasaFiskalna() {}
 kasaFiskalna::~kasaFiskalna() {}
@@ -33,8 +35,36 @@ void kasaFiskalna::usunTowarZRejestru(int id){
 
 }
 
-double kasaFiskalna::getBalans(){
-    return aktywnyRachunek.getBalans();
+double kasaFiskalna::getBalans() {
+    std::vector<Towar> towary = aktywnyRachunek.getTowary();
+    std::map<int, int> iloscSztukWKoszyku;
+    double sumaBezZnizek = 0.0;
+
+    for (size_t i = 0; i < towary.size(); i++) {
+        iloscSztukWKoszyku[towary[i].id]++;
+        sumaBezZnizek += towary[i].cena;
+    }
+
+    double wartoscDarmowychSztuk = 0.0;
+    
+    for (size_t i = 0; i < promocje.size(); i++) {
+        if (promocje[i].aktywna) {
+            for (size_t j = 0; j < promocje[i].objeteProdukty.size(); j++) {
+                Towar produktWPromocji = promocje[i].objeteProdukty[j];
+                
+                int sztukiWKieszeni = iloscSztukWKoszyku[produktWPromocji.id];
+                
+                if (sztukiWKieszeni >= 3) {
+                    int darmoweSztuki = sztukiWKieszeni / 3;
+                    wartoscDarmowychSztuk += darmoweSztuki * produktWPromocji.cena;
+                }
+            }
+        }
+    }
+
+    double sumaPoPromocjach = sumaBezZnizek - wartoscDarmowychSztuk;
+
+    return sumaPoPromocjach * (1.0 - aktywnyRachunek.getAktywnaZnizka());
 }
 
 int kasaFiskalna::getRozmiarRejestru() {
@@ -46,6 +76,7 @@ std::vector<Towar> kasaFiskalna::getRejestr(){
 }
 
 void kasaFiskalna::dodajDoKoszyka(int id, int ilosc) {
+
     if (id == idKartyVIP) {
         aktywnyRachunek.ustawZnizke(znizkaVIP);
         return; 

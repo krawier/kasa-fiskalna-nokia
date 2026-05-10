@@ -20,5 +20,7 @@ public:
     double getBalans();
     std::vector<Towar> getTowary();
 
+    double getAktywnaZnizka();
+
     void ustawZnizke(double procent);
 };
