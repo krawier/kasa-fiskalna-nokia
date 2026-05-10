@@ -16,6 +16,7 @@ void Koszyk::usunZKoszyka(int id){
 
 void Koszyk::wyczysc(){
     listaZakupow.clear();
+    aktywnaZnizkaProcentowa = 0.0;
 }
 
 double Koszyk::getBalans(){
@@ -23,9 +24,13 @@ double Koszyk::getBalans(){
     for(size_t i = 0; i < listaZakupow.size(); i++){
         suma += listaZakupow[i].cena;
     }
-    return suma;
+    return suma * (1.0 - aktywnaZnizkaProcentowa);
 }
 
 std::vector<Towar> Koszyk::getTowary(){
     return listaZakupow;
+}
+
+void Koszyk::ustawZnizke(double procent) {
+    aktywnaZnizkaProcentowa = procent;
 }

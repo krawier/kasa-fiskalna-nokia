@@ -18,6 +18,9 @@ private:
     std::vector<Towar> rejestr;
     Koszyk aktywnyRachunek;
     std::vector<Promocja> promocje; 
+
+    int idKartyVIP = -1;    
+    double znizkaVIP = 0.0;
 public:
 
     kasaFiskalna();
@@ -44,5 +47,7 @@ public:
     void usunTowarZPromocji(int saleID, int prodID);
 
     std::vector<Promocja> getPromocje();
+
+    void ustawKarteStalegoKlienta(int id, double znizka);
 
 };

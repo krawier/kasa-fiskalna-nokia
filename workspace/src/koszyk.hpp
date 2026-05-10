@@ -11,10 +11,14 @@ struct Towar {
 class Koszyk {
 private:
     std::vector<Towar> listaZakupow;
+    double aktywnaZnizkaProcentowa = 0.0;
+
 public:
     void dodajTowar(Towar t);
     void usunZKoszyka(int id);
     void wyczysc();
     double getBalans();
     std::vector<Towar> getTowary();
+
+    void ustawZnizke(double procent);
 };

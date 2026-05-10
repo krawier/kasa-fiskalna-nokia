@@ -46,6 +46,11 @@ std::vector<Towar> kasaFiskalna::getRejestr(){
 }
 
 void kasaFiskalna::dodajDoKoszyka(int id, int ilosc) {
+    if (id == idKartyVIP) {
+        aktywnyRachunek.ustawZnizke(znizkaVIP);
+        return; 
+    }
+
     for(size_t i = 0; i < rejestr.size(); i++) {
         if(rejestr[i].id == id) {
             for(int j = 0; j < ilosc; j++) {
@@ -182,4 +187,9 @@ bool kasaFiskalna::czyTowarWPromocji(int saleID, int prodID){
 
 std::vector<Promocja> kasaFiskalna::getPromocje(){
     return promocje;
+}
+
+void kasaFiskalna::ustawKarteStalegoKlienta(int id, double znizka) {
+    idKartyVIP = id;
+    znizkaVIP = znizka;
 }
