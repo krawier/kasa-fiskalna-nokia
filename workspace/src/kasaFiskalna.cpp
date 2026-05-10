@@ -120,3 +120,62 @@ bool kasaFiskalna::czyPromocjaAktywna(int id){
 
     return false;
 }
+
+void kasaFiskalna::dodajTowarDoPromocji(int saleID, int prodID){
+    Towar szukanyTowar;
+    for(size_t j=0; j<rejestr.size();j++ ){
+        if(prodID==rejestr[j].id){
+            szukanyTowar = rejestr[j];
+            break;
+        }            
+    }
+
+    for(size_t i = 0; i<promocje.size(); i++){
+
+        if(saleID==promocje[i].id){
+            promocje[i].objeteProdukty.push_back(szukanyTowar);
+            break;
+        }
+    }
+
+}
+
+void kasaFiskalna::usunTowarZPromocji(int saleID, int prodID) {
+    
+    for(size_t i = 0; i < promocje.size(); i++) {
+        
+        if(promocje[i].id == saleID) {
+            
+            for(size_t j = 0; j < promocje[i].objeteProdukty.size(); j++) {
+                
+                if(promocje[i].objeteProdukty[j].id == prodID) {
+                    
+                    promocje[i].objeteProdukty.erase(promocje[i].objeteProdukty.begin() + j);
+                    
+                    break; 
+                }
+            }
+            break; 
+        }
+    }
+}
+
+bool kasaFiskalna::czyTowarWPromocji(int saleID, int prodID){
+
+    for(size_t i = 0; i < promocje.size(); i++) {
+        
+        if(promocje[i].id == saleID) {
+            
+            for(size_t j = 0; j < promocje[i].objeteProdukty.size(); j++) {
+                
+                if(promocje[i].objeteProdukty[j].id == prodID) {
+                    
+                   return true;
+                }
+            }
+            return false; 
+        }
+        return false;
+    }
+    return false;
+}

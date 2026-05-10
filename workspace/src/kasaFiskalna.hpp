@@ -8,6 +8,8 @@ struct Promocja {
     int id;
     std::string nazwa;
     bool aktywna;
+    std::vector<Towar> objeteProdukty;
+
 };
 
 class kasaFiskalna{
@@ -36,6 +38,10 @@ public:
     void aktywujPromocje(int id);
     void deaktywujPromocje(int id);
     bool czyPromocjaAktywna(int id);
+
+    bool czyTowarWPromocji(int saleID, int prodID);
+    void dodajTowarDoPromocji(int saleID, int prodID);
+    void usunTowarZPromocji(int saleID, int prodID);
 
 
 };

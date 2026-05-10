@@ -103,3 +103,20 @@ TEST(KasaFiskalnaTest, ShouldActivateAndDeactivatePromotionInRegistry) {
     kasa.deaktywujPromocje(100);
     EXPECT_FALSE(kasa.czyPromocjaAktywna(100));
 }
+
+TEST(KasaFiskalnaTest, ShouldAddAndRemoveProductFromPromotion) {
+    kasaFiskalna kasa;
+    
+    kasa.dodajTowarDoRejestru(1, "Chleb", 5.50);
+    kasa.dodajPromocje(100, "Promocja na pieczywo");
+
+    EXPECT_FALSE(kasa.czyTowarWPromocji(100, 1));
+
+    kasa.dodajTowarDoPromocji(100, 1);
+
+    EXPECT_TRUE(kasa.czyTowarWPromocji(100, 1));
+
+    kasa.usunTowarZPromocji(100, 1);
+
+    EXPECT_FALSE(kasa.czyTowarWPromocji(100, 1));
+}
